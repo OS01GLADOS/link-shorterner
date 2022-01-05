@@ -1,0 +1,29 @@
+{% extends 'short_link_user/base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'short_link_user/send-request.js' %}"></script>
+    <script>
+        setUrl({% url 'generate-link' %});
+        setCurrentUser({{ user.id }});
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container content-section">
+        <form method="POST" id="form">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3">generate short link</legend>
+                {{ form|crispy }}
+                <div class="form-group mt-3">
+                    <button class="btn btn-outline-info"  type="submit">Short Link!</button>
+                </div>
+                <div id="res_url" class="content mt-3"></div>
+            </fieldset>
+
+        </form>
+    </div>
+
+{% endblock %}

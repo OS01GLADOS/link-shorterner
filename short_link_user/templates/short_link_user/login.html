@@ -1,0 +1,17 @@
+{% extends 'short_link_user/base/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class=" container content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3">Log In</legend>
+            {{ form|crispy }}
+            <div class="form-group mt-3">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'short_link_user/base/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1 class="container">{{ user.username }} shorted links</h1>
+    {% if Links %}
+        {% for Link in Links %}
+            <div class="container bg-light rounded">
+                <h5>original link: <a href="{{ Link.orig_url }}">{{ Link.orig_url }}</a></h5>
+                <p>shorted link: <a href="{{ Link.get_absolute_url }}">{{ Link.get_absolute_url }}</a></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4 class="container">you haven't shorted any links</h4>
+    {% endif %}
+{% endblock %}
