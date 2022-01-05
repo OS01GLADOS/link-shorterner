@@ -20,11 +20,12 @@ class LinkResolverTestCase(TestCase):
         shorted_link_object.save()
 
     def test_resolve_link(self):
-        response = self.client.get(reverse('resolve-link', kwargs={'identifier': self.shortedLink}), follow=True)
+        response = self.client.get(reverse(
+            'resolve-link', kwargs={'identifier': self.shortedLink}),
+                                   follow=True)
         self.assertRedirects(response, self.original_link)
 
 
-# test link generation
 class LinkGeneratorTestCase(TestCase):
     def setUp(self):
         user = User.objects.create(username='testuser')
@@ -39,5 +40,9 @@ class LinkGeneratorTestCase(TestCase):
             'link': '/',
             'user': self.user.id
         }
-        response = self.client.post(reverse('generate-link'), data, follow=True)
+        response = self.client.post(
+            reverse('generate-link'),
+            data,
+            follow=True
+        )
         self.assertEqual(response.content, link)
