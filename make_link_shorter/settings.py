@@ -20,11 +20,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = os.environ.get('SECRET_KEY')
+=======
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+>>>>>>> 3ddb3e40daadd861262027987d610c44e4e72eda
 
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(' ')
+=======
+ALLOWED_HOSTS = [
+    '.127.0.0.1',
+    'localhost'
+]
+>>>>>>> 3ddb3e40daadd861262027987d610c44e4e72eda
 
 CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_HOSTS', 'localhost').split(' ')
 
@@ -76,7 +87,6 @@ WSGI_APPLICATION = 'make_link_shorter.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('POSTGRES_ENGINE', 'django.db.backends.sqlite3'),
